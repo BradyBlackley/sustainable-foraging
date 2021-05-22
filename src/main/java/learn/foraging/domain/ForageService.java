@@ -145,8 +145,8 @@ public class ForageService {
     private void validateDuplicateForage(Forage forage, Result<Forage> result) {
 
         if(forageRepository.findByDate(forage.getDate()).stream()
-                .filter(f -> f.getForager().equals(forage.getForager()))
-                .anyMatch(f -> f.getItem().equals(forage.getItem()))) {
+                .filter(f -> f.getForager().getId().equals(forage.getForager().getId()))
+                .anyMatch(f -> f.getItem().getId() == forage.getItem().getId())) {
             result.addErrorMessage("The given forage is a duplicate entry.");
         }
 
