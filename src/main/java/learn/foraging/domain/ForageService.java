@@ -99,7 +99,7 @@ public class ForageService {
         validateChildrenExist(forage, result);
 
         validateDuplicateForage(forage, result);
-        if(!result.isSuccess()) {
+        if (!result.isSuccess()) {
             return result;
         }
 
@@ -144,7 +144,7 @@ public class ForageService {
     //validate that the date, forager and item don't already exist - prevent duplicate entry
     private void validateDuplicateForage(Forage forage, Result<Forage> result) {
 
-        if(forageRepository.findByDate(forage.getDate()).stream()
+        if (forageRepository.findByDate(forage.getDate()).stream()
                 .filter(f -> f.getForager().getId().equals(forage.getForager().getId()))
                 .anyMatch(f -> f.getItem().getId() == forage.getItem().getId())) {
             result.addErrorMessage("The given forage is a duplicate entry.");
