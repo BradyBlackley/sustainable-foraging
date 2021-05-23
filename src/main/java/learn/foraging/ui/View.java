@@ -119,6 +119,15 @@ public class View {
         return item;
     }
 
+    public Forager makeForager() {
+        displayHeader(MainMenuOption.ADD_FORAGER.getMessage());
+        Forager forager = new Forager();
+        forager.setFirstName(io.readRequiredString("First Name: "));
+        forager.setLastName(io.readRequiredString("Last Name: "));
+        forager.setState(io.readRequiredString("State: "));
+        return forager;
+    }
+
     public GenerateRequest getGenerateRequest() {
         displayHeader(MainMenuOption.GENERATE.getMessage());
         LocalDate start = io.readLocalDate("Select a start date [MM/dd/yyyy]: ");

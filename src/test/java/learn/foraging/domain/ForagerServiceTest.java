@@ -28,12 +28,67 @@ class ForagerServiceTest {
     void shouldNotAddDuplicateForager() throws DataException {
 
         Forager forager = new Forager();
-        forager.setId("0e4707f4-407e-4ec9-9665-baca0aabe88c");
+        //forager.setId("0e4707f4-407e-4ec9-9665-baca0aabe88c");
         forager.setFirstName("Jilly");
         forager.setLastName("Sisse");
         forager.setState("GA");
         Result<Forager> result = service.add(forager);
         assertFalse(result.isSuccess());
+
+    }
+
+    @Test
+    void shouldNotAddEmptyFirstNameForager() throws DataException {
+
+        Forager forager = new Forager();
+        forager.setFirstName("");
+        forager.setLastName("Sisse");
+        forager.setState("GA");
+        Result<Forager> result = service.add(forager);
+        assertFalse(result.isSuccess());
+
+    }
+
+    @Test
+    void shouldNotAddEmptyLastNameForager() throws DataException {
+
+        Forager forager = new Forager();
+        forager.setFirstName("Jilly");
+        forager.setLastName("");
+        forager.setState("GA");
+        Result<Forager> result = service.add(forager);
+        assertFalse(result.isSuccess());
+
+    }
+
+    @Test
+    void shouldNotAddEmptyStateForager() throws DataException {
+
+        Forager forager = new Forager();
+        forager.setFirstName("Jilly");
+        forager.setLastName("Sisse");
+        forager.setState("");
+        Result<Forager> result = service.add(forager);
+        assertFalse(result.isSuccess());
+
+    }
+
+    @Test
+    void shouldNotAddBadFormatStateForager() throws DataException {
+
+        Forager forager = new Forager();
+        forager.setFirstName("Jilly");
+        forager.setLastName("Sisse");
+        forager.setState("Georgia");
+        Result<Forager> result = service.add(forager);
+        assertFalse(result.isSuccess());
+
+        Forager forager1 = new Forager();
+        forager1.setFirstName("Jilly");
+        forager1.setLastName("Sisse");
+        forager1.setState("G");
+        Result<Forager> result1 = service.add(forager1);
+        assertFalse(result1.isSuccess());
 
     }
 }
