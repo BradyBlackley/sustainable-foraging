@@ -199,7 +199,26 @@ public class View {
         }
 
         for (Item item : items) {
-            io.printf("%s: %s, %s, %.2f $/kg%n", item.getId(), item.getName(), item.getCategory(), item.getDollarPerKilogram());
+            io.printf("%s: %s, %s, %.2f $/kg%n",
+                    item.getId(), item.getName(),
+                    item.getCategory(), item.getDollarPerKilogram());
         }
     }
+
+    public void displayForagers(List<Forager> foragers) {
+
+        if (foragers.size() == 0) {
+            io.println("No items found");
+        }
+
+        for (Forager forager : foragers) {
+            io.printf("%s: %s, %s, %s%n",
+                    forager.getId(), forager.getFirstName(),
+                    forager.getLastName(), forager.getState());
+        }
+    }
+
 }
+
+
+

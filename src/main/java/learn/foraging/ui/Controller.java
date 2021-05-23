@@ -48,6 +48,9 @@ public class Controller {
                 case VIEW_ITEMS:
                     viewItems();
                     break;
+                case VIEW_FORAGERS:
+                    viewForagers();
+                    break;
                 case ADD_FORAGE:
                     addForage();
                     break;
@@ -86,6 +89,13 @@ public class Controller {
         List<Item> items = itemService.findByCategory(category);
         view.displayHeader("Items");
         view.displayItems(items);
+        view.enterToContinue();
+    }
+
+    private void viewForagers() {
+        view.displayHeader(MainMenuOption.VIEW_FORAGERS.getMessage());
+        List<Forager> foragers = foragerService.findAll();
+        view.displayForagers(foragers);
         view.enterToContinue();
     }
 

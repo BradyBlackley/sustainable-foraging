@@ -15,6 +15,10 @@ public class ForagerService {
         this.repository = repository;
     }
 
+    public List<Forager> findAll(){
+        return repository.findAll();
+    }
+
     public List<Forager> findByState(String stateAbbr) {
         return repository.findByState(stateAbbr);
     }
