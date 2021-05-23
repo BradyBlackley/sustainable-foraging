@@ -8,6 +8,7 @@ import learn.foraging.models.Item;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class View {
@@ -218,6 +219,16 @@ public class View {
         }
     }
 
+    public void displayKGPerItemReport(Map<Item, Double> kgPerItem) {
+        for (Item item : kgPerItem.keySet()){
+            System.out.println(item.getName() + ": " + kgPerItem.get(item));
+        }
+    }
+
+    public LocalDate getReportDate() {
+        displayHeader(MainMenuOption.REPORT_KG_PER_ITEM.getMessage());
+        return io.readLocalDate("Select a date [MM/dd/yyyy]: ");
+    }
 }
 
 

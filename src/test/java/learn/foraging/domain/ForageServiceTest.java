@@ -86,5 +86,11 @@ class ForageServiceTest {
 
     }
 
+    @Test
+    void kilogramsOfEachItemOnOneDayReport() throws DataException {
+        LocalDate date = LocalDate.of(2020, 6, 26);
+        service.kilogramsOfEachItemOnOneDayReport(date);
+    }
+
 
 }

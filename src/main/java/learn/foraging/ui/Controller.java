@@ -12,6 +12,7 @@ import learn.foraging.models.Item;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public class Controller {
 
@@ -61,8 +62,7 @@ public class Controller {
                     addItem();
                     break;
                 case REPORT_KG_PER_ITEM:
-                    view.displayStatus(false, "NOT IMPLEMENTED");
-                    view.enterToContinue();
+                    reportKGPerItem();
                     break;
                 case REPORT_CATEGORY_VALUE:
                     view.displayStatus(false, "NOT IMPLEMENTED");
@@ -73,6 +73,14 @@ public class Controller {
                     break;
             }
         } while (option != MainMenuOption.EXIT);
+    }
+
+    private void reportKGPerItem() {
+        LocalDate date = view.getReportDate();
+        view.displayHeader(MainMenuOption.REPORT_KG_PER_ITEM.getMessage());
+        Map<Item, Double> kgPerItem = forageService.kilogramsOfEachItemOnOneDayReport(date);
+        view.displayKGPerItemReport(kgPerItem);
+        view.enterToContinue();
     }
 
     // top level menu
