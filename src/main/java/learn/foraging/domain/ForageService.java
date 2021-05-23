@@ -86,14 +86,9 @@ public class ForageService {
 
     public Map<Item, Double> kilogramsOfEachItemOnOneDayReport(LocalDate date) {
 
-        Map<Item, Double> kgPerItem = forageRepository.findByDate(date).stream()
+        return findByDate(date).stream()
                 .collect(Collectors.groupingBy(Forage::getItem,
                         Collectors.summingDouble(Forage::getKilograms)));
-
-//        for (Item item : kgPerItem.keySet()){
-//            System.out.println(item.getName() + ": " + kgPerItem.get(item));
-//        }
-        return kgPerItem;
     }
 
     public void totalValueOfEachCategoryCollectedOnOneDayReport(LocalDate date) {
