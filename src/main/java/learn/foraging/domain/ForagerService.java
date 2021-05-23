@@ -94,7 +94,7 @@ public class ForagerService {
         if (repository.findAll().stream()
                 .filter(f -> f.getFirstName().equals(forager.getFirstName()))
                 .filter(f -> f.getLastName().equals(forager.getLastName()))
-                .anyMatch(f -> f.getState() == forager.getState())) {
+                .anyMatch(f -> f.getState().equals(forager.getState()))) {
             result.addErrorMessage("The given forager already exists.");
         }
         return result;
