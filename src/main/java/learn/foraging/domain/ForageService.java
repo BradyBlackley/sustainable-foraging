@@ -96,12 +96,9 @@ public class ForageService {
 
     public Map<Category, Double> totalValueOfEachCategoryCollectedOnOneDayReport(LocalDate date) {
 
-        Map<Item, Double> kgPerItem = kilogramsOfEachItemOnOneDayReport(date);
-
          return findByDate(date).stream()
-                    .map(Forage::getItem)
-                    .collect(Collectors.groupingBy(Item::getCategory,
-                            Collectors.summingDouble(i -> i.getDollarPerKilogram().doubleValue() * kgPerItem.get(i))));
+                    .collect(Collectors.groupingBy(f -> f.getItem().getCategory(),
+                            Collectors.summingDouble(f -> f.getValue().doubleValue())));
     }
 
     private Result<Forage> validate(Forage forage) {

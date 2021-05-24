@@ -215,8 +215,8 @@ public class View {
         }
 
         for (Forager forager : foragers) {
-            io.printf("%s: %s, %s, %s%n",
-                    forager.getId(), forager.getFirstName(),
+            io.printf("%s: %s, %s%n",
+                    forager.getFirstName(),
                     forager.getLastName(), forager.getState());
         }
     }
