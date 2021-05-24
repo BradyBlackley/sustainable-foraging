@@ -223,13 +223,13 @@ public class View {
 
     public void displayKGPerItemReport(Map<Item, Double> kgPerItem) {
         for (Item item : kgPerItem.keySet()){
-            System.out.println(item.getName() + ": " + kgPerItem.get(item));
+            System.out.println(item.getName() + ": " + kgPerItem.get(item) + "kg");
         }
     }
 
     public void displayValuePerCategory(Map<Category, Double> valuePerCategory) {
         for (Category category : valuePerCategory.keySet()){
-            System.out.println(category.toString() + ": " + valuePerCategory.get(category));
+            System.out.println(category.toString() + ": $" + valuePerCategory.get(category));
         }
     }
 

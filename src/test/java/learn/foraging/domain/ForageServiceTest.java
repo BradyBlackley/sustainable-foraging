@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -89,13 +90,18 @@ class ForageServiceTest {
     @Test
     void kilogramsOfEachItemOnOneDayReport() throws DataException {
         LocalDate date = LocalDate.of(2020, 6, 26);
-        service.kilogramsOfEachItemOnOneDayReport(date);
+        Map<Item, Double> report = service.kilogramsOfEachItemOnOneDayReport(date);
+        assertEquals(1, report.size());
+        assertEquals(1.25, report.get(ItemRepositoryDouble.ITEM));
     }
 
     @Test
     void totalValueOfEachCategoryCollectedOnOneDayReport() {
         LocalDate date = LocalDate.of(2020, 6, 26);
-        service.kilogramsOfEachItemOnOneDayReport(date);
+        Map<Category, Double> report =
+                service.totalValueOfEachCategoryCollectedOnOneDayReport(date);
+        assertEquals(1, report.size());
+        assertEquals(12.4875, report.get(ItemRepositoryDouble.ITEM.getCategory()));
     }
 
 
