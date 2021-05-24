@@ -4,6 +4,7 @@ import learn.foraging.data.DataException;
 import learn.foraging.data.ForageRepository;
 import learn.foraging.data.ForagerRepository;
 import learn.foraging.data.ItemRepository;
+import learn.foraging.models.Category;
 import learn.foraging.models.Forage;
 import learn.foraging.models.Forager;
 import learn.foraging.models.Item;
@@ -91,9 +92,14 @@ public class ForageService {
                         Collectors.summingDouble(Forage::getKilograms)));
     }
 
-    public void totalValueOfEachCategoryCollectedOnOneDayReport(LocalDate date) {
+    public Map<Category, Double> totalValueOfEachCategoryCollectedOnOneDayReport(LocalDate date) {
 
+        Map<Item, Double> kgPerItem = kilogramsOfEachItemOnOneDayReport(date);
 
+         return findByDate(date).stream()
+                    .map(Forage::getItem)
+                    .collect(Collectors.groupingBy(Item::getCategory,
+                            Collectors.summingDouble(i -> i.getDollarPerKilogram().doubleValue() * kgPerItem.get(i))));
     }
 
     private Result<Forage> validate(Forage forage) {

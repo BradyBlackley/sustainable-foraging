@@ -65,14 +65,22 @@ public class Controller {
                     reportKGPerItem();
                     break;
                 case REPORT_CATEGORY_VALUE:
-                    view.displayStatus(false, "NOT IMPLEMENTED");
-                    view.enterToContinue();
+                    reportValuePerCategory();
                     break;
                 case GENERATE:
                     generate();
                     break;
             }
         } while (option != MainMenuOption.EXIT);
+    }
+
+    private void reportValuePerCategory() {
+        LocalDate date = view.getReportDate();
+        view.displayHeader(MainMenuOption.REPORT_CATEGORY_VALUE.getMessage());
+        Map<Category, Double> valuePerCategory =
+                forageService.totalValueOfEachCategoryCollectedOnOneDayReport(date);
+        view.displayValuePerCategory(valuePerCategory);
+        view.enterToContinue();
     }
 
     private void reportKGPerItem() {

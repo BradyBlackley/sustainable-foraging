@@ -225,6 +225,12 @@ public class View {
         }
     }
 
+    public void displayValuePerCategory(Map<Category, Double> valuePerCategory) {
+        for (Category category : valuePerCategory.keySet()){
+            System.out.println(category.toString() + ": " + valuePerCategory.get(category));
+        }
+    }
+
     public LocalDate getReportDate() {
         displayHeader(MainMenuOption.REPORT_KG_PER_ITEM.getMessage());
         return io.readLocalDate("Select a date [MM/dd/yyyy]: ");

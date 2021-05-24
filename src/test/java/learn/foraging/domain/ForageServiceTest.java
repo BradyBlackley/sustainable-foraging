@@ -92,5 +92,11 @@ class ForageServiceTest {
         service.kilogramsOfEachItemOnOneDayReport(date);
     }
 
+    @Test
+    void totalValueOfEachCategoryCollectedOnOneDayReport() {
+        LocalDate date = LocalDate.of(2020, 6, 26);
+        service.kilogramsOfEachItemOnOneDayReport(date);
+    }
+
 
 }
