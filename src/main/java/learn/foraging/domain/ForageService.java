@@ -8,6 +8,7 @@ import learn.foraging.models.Category;
 import learn.foraging.models.Forage;
 import learn.foraging.models.Forager;
 import learn.foraging.models.Item;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+@Service
 public class ForageService {
 
     private final ForageRepository forageRepository;
